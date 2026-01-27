@@ -1,0 +1,36 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:i="using:Avalonia.Xaml.Interactivity"
+             xmlns:vm="using:QbCloneApp.ViewModels"
+             xmlns:views="clr-namespace:QbCloneApp.Views"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="QbCloneApp.Views.DataSourceView"
+             x:DataType="vm:DataSourceViewModel">
+    <i:Interaction.Behaviors>
+        <EventTriggerBehavior EventName="AttachedToVisualTree">
+            <InvokeCommandAction Command="{Binding LoadDataCommand}" />
+        </EventTriggerBehavior>
+    </i:Interaction.Behaviors>    
+    
+    <Grid RowDefinitions="3*,7*">
+        <Border Background="#2D2D30"
+                Padding="12">
+            <views:DataHeaderView />
+        </Border>
+        
+        <ListBox Grid.Row="1" >
+                 <!-- Items="{Binding Users}"> -->
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <!-- <Border Padding="8" -->
+                    <!--         BorderThickness="0,0,0,1" -->
+                    <!--         BorderBrush="#DDD"> -->
+                    <!--     <TextBlock Text="{Binding Name}"/> -->
+                    <!-- </Border> -->
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>        
+    </Grid>
+</UserControl>

@@ -2,12 +2,18 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              x:Class="GiosWebApp.App"
              xmlns:local="using:GiosWebApp"
+             xmlns:viewModels="clr-namespace:GiosWebApp.ViewModels"
+             xmlns:views="clr-namespace:GiosWebApp.Views"
              RequestedThemeVariant="Default">
-             <!-- "Default" ThemeVariant follows system theme variant. "Dark" or "Light" are other available options. -->
 
-    <Application.DataTemplates>
-        <local:ViewLocator/>
-    </Application.DataTemplates>
+             <Application.DataTemplates>
+                 <DataTemplate DataType="viewModels:DataSourceViewModel">
+                     <views:DataSourceView/>
+                 </DataTemplate>
+                 <DataTemplate DataType="viewModels:UpdatingFilesViewModel">
+                     <views:UpdatingFilesView/>
+                 </DataTemplate>
+             </Application.DataTemplates>         
   
     <Application.Styles>
         <FluentTheme />

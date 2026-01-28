@@ -1,6 +1,6 @@
 using Avalonia.Controls;
 
-namespace QbCloneApp.Views;
+namespace GiosWebApp.Views;
 
 public partial class DataSourceView : UserControl
 {

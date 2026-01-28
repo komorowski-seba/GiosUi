@@ -1,4 +1,4 @@
-namespace QbCloneApp.ViewModels;
+namespace GiosWebApp.ViewModels;
 
 public class UpdatingFilesViewModel: ViewModelBase
 {

@@ -5,12 +5,11 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace GiosWebApp.Services;
 
-public interface IWindowService
+public interface IWindowService: IDisposable
 {
     void CreateScope(Action<IServiceCollection> confServices);
     
     MainWindow Show<VM>() where VM : ViewModelBase;
     
     void Hide();
-
 }

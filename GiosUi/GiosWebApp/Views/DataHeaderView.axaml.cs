@@ -1,8 +1,6 @@
-using Avalonia;
 using Avalonia.Controls;
-using Avalonia.Markup.Xaml;
 
-namespace QbCloneApp.Views;
+namespace GiosWebApp.Views;
 
 public partial class DataHeaderView : UserControl
 {

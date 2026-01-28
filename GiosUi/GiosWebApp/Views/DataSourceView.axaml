@@ -3,10 +3,10 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:i="using:Avalonia.Xaml.Interactivity"
-             xmlns:vm="using:QbCloneApp.ViewModels"
-             xmlns:views="clr-namespace:QbCloneApp.Views"
+             xmlns:vm="using:GiosWebApp.ViewModels"
+             xmlns:views="clr-namespace:GiosWebApp.Views"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-             x:Class="QbCloneApp.Views.DataSourceView"
+             x:Class="GiosWebApp.Views.DataSourceView"
              x:DataType="vm:DataSourceViewModel">
     <i:Interaction.Behaviors>
         <EventTriggerBehavior EventName="AttachedToVisualTree">

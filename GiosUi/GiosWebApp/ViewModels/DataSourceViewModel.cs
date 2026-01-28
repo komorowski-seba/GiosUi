@@ -1,28 +1,23 @@
-using System;
 using System.Threading.Tasks;
 using CommunityToolkit.Mvvm.Input;
-using Core.Application.Extensions;
-using Core.Application.Services;
 
-namespace QbCloneApp.ViewModels;
+namespace GiosWebApp.ViewModels;
 
 public partial class DataSourceViewModel : ViewModelBase
 {
-    private readonly IRCloneService _rCloneService;
     private static bool _isLoadData = false;
 
-    public DataSourceViewModel(IRCloneService rCloneService)
+    public DataSourceViewModel()
     {
-        _rCloneService = rCloneService;
     }
 
     [RelayCommand]
-    private async Task LoadDataAsync()
+    private Task LoadDataAsync()
     {
         if (_isLoadData) 
-            return;
+            return Task.CompletedTask;
         
-        var result = (await _rCloneService.CheckChanges()).ExtractLog();
         _isLoadData = true;
+        return Task.CompletedTask;
     }
 }

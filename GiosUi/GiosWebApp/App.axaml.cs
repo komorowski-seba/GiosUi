@@ -38,6 +38,13 @@ public partial class App : Application
             // services.AddInfrastructure();            
         });
         
+        if (ApplicationLifetime is ISingleViewApplicationLifetime singleView)
+        {
+            // singleView.
+            //
+            // singleView.MainView = new MainView { DataContext = new MainViewModel() };
+        }        
+        
         if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
         {
             desktop.Exit += (_, _) =>

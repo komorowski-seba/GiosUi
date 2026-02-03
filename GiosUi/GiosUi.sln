@@ -8,6 +8,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GiosMobile", "GiosMobile\Gi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GiosMobile.Android", "GiosMobile\GiosMobile.Android\GiosMobile.Android.csproj", "{33E62B58-A559-4AEF-9F84-85214D492D94}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GiosMobile.Browser", "GiosMobile\GiosMobile.Browser\GiosMobile.Browser.csproj", "{0FF014DF-EB06-4024-9B64-79AC09D16EB2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,5 +32,9 @@ Global
 		{33E62B58-A559-4AEF-9F84-85214D492D94}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{33E62B58-A559-4AEF-9F84-85214D492D94}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{33E62B58-A559-4AEF-9F84-85214D492D94}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0FF014DF-EB06-4024-9B64-79AC09D16EB2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0FF014DF-EB06-4024-9B64-79AC09D16EB2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0FF014DF-EB06-4024-9B64-79AC09D16EB2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0FF014DF-EB06-4024-9B64-79AC09D16EB2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

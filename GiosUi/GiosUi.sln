@@ -4,6 +4,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "Core\Core.csproj", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GiosApp", "GiosApp\GiosApp.csproj", "{E51F2114-6053-49A1-AB43-311ADE026FDB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GiosMobile", "GiosMobile\GiosMobile\GiosMobile.csproj", "{A37F7629-0515-45AC-A77D-FF187AFF231F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GiosMobile.Android", "GiosMobile\GiosMobile.Android\GiosMobile.Android.csproj", "{33E62B58-A559-4AEF-9F84-85214D492D94}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +22,13 @@ Global
 		{E51F2114-6053-49A1-AB43-311ADE026FDB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E51F2114-6053-49A1-AB43-311ADE026FDB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E51F2114-6053-49A1-AB43-311ADE026FDB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A37F7629-0515-45AC-A77D-FF187AFF231F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A37F7629-0515-45AC-A77D-FF187AFF231F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A37F7629-0515-45AC-A77D-FF187AFF231F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A37F7629-0515-45AC-A77D-FF187AFF231F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{33E62B58-A559-4AEF-9F84-85214D492D94}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{33E62B58-A559-4AEF-9F84-85214D492D94}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{33E62B58-A559-4AEF-9F84-85214D492D94}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{33E62B58-A559-4AEF-9F84-85214D492D94}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

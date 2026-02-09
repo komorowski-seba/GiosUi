@@ -6,6 +6,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GiosWeb", "GiosWeb\GiosWeb.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nuke", "Nuke\Nuke.csproj", "{4AF0B6E7-12D0-492D-A69C-838B2403093E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GiosUi", "GiosUi\GiosUi.csproj", "{A1AFF885-BE73-408C-81BB-DDFEEC97B05E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GiosUi.Android", "GiosUi.Android\GiosUi.Android.csproj", "{BDE35EC3-F23C-4EBB-86BC-6130A81DE07A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GiosUi.Browser", "GiosUi.Browser\GiosUi.Browser.csproj", "{DC35C482-E4FC-4457-9125-FC543E482448}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GiosUi.Desktop", "GiosUi.Desktop\GiosUi.Desktop.csproj", "{0F2720E2-EA7B-4514-98D4-8A187DF50681}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,5 +32,21 @@ Global
 		{4AF0B6E7-12D0-492D-A69C-838B2403093E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4AF0B6E7-12D0-492D-A69C-838B2403093E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4AF0B6E7-12D0-492D-A69C-838B2403093E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A1AFF885-BE73-408C-81BB-DDFEEC97B05E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A1AFF885-BE73-408C-81BB-DDFEEC97B05E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A1AFF885-BE73-408C-81BB-DDFEEC97B05E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A1AFF885-BE73-408C-81BB-DDFEEC97B05E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BDE35EC3-F23C-4EBB-86BC-6130A81DE07A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BDE35EC3-F23C-4EBB-86BC-6130A81DE07A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BDE35EC3-F23C-4EBB-86BC-6130A81DE07A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BDE35EC3-F23C-4EBB-86BC-6130A81DE07A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DC35C482-E4FC-4457-9125-FC543E482448}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DC35C482-E4FC-4457-9125-FC543E482448}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DC35C482-E4FC-4457-9125-FC543E482448}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DC35C482-E4FC-4457-9125-FC543E482448}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0F2720E2-EA7B-4514-98D4-8A187DF50681}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0F2720E2-EA7B-4514-98D4-8A187DF50681}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0F2720E2-EA7B-4514-98D4-8A187DF50681}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0F2720E2-EA7B-4514-98D4-8A187DF50681}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

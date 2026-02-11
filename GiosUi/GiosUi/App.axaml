@@ -1,14 +1,11 @@
 <Application xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="using:GiosUi"
              x:Class="GiosUi.App"
+             xmlns:local="using:GiosUi"
+             xmlns:viewModels="clr-namespace:GiosUi.ViewModels"
+             xmlns:views="clr-namespace:GiosUi.Views"
              RequestedThemeVariant="Default">
              <!-- "Default" ThemeVariant follows system theme variant. "Dark" or "Light" are other available options. -->
-
-             <!-- xmlns:local="using:GiosWebApp" -->
-             <!-- xmlns:viewModels="clr-namespace:GiosWebApp.ViewModels" -->
-             <!-- xmlns:views="clr-namespace:GiosWebApp.Views" -->
-             
              
              <Application.DataTemplates>
                  <DataTemplate DataType="viewModels:DataSourceViewModel">

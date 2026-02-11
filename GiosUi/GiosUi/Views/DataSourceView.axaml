@@ -3,10 +3,10 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:i="using:Avalonia.Xaml.Interactivity"
-             xmlns:vm="using:GiosWebApp.ViewModels"
-             xmlns:views="clr-namespace:GiosWebApp.Views"
+             xmlns:vm="using:GiosUi.ViewModels"
+             xmlns:views="clr-namespace:GiosUi.Views"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-             x:Class="GiosWebApp.Views.DataSourceView"
+             x:Class="GiosUi.Views.DataSourceView"
              x:DataType="vm:DataSourceViewModel">
     <i:Interaction.Behaviors>
         <EventTriggerBehavior EventName="AttachedToVisualTree">

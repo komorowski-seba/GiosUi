@@ -1,9 +1,8 @@
-using System;
-using GiosWebApp.ViewModels;
-using GiosWebApp.Views;
+using GiosUi.ViewModels;
+using GiosUi.Views;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace GiosWebApp.Services;
+namespace GiosUi.Services;
 
 public class WindowService: IWindowService
 {
@@ -25,7 +24,7 @@ public class WindowService: IWindowService
         if (_window == null)
             _window = _scope!.ServiceProvider.GetService<MainWindow>();
         
-        ((MainWindowViewModel)_window!.DataContext!).CurrentViewModel = _scope!.ServiceProvider.GetService<VM>();
+        ((MainViewModel)_window!.DataContext!).CurrentViewModel = _scope!.ServiceProvider.GetService<VM>();
         _window.Show();
         _window.Activate();
         

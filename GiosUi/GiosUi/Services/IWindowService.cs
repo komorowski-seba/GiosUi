@@ -1,9 +1,9 @@
 using System;
-using GiosWebApp.ViewModels;
-using GiosWebApp.Views;
+using GiosUi.ViewModels;
+using GiosUi.Views;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace GiosWebApp.Services;
+namespace GiosUi.Services;
 
 public interface IWindowService: IDisposable
 {

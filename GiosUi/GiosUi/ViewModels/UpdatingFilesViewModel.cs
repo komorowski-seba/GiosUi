@@ -1,4 +1,4 @@
-namespace GiosWebApp.ViewModels;
+namespace GiosUi.ViewModels;
 
 public class UpdatingFilesViewModel: ViewModelBase
 {

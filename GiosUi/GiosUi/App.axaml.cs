@@ -1,9 +1,9 @@
 using Avalonia;
 using Avalonia.Controls.ApplicationLifetimes;
-using Avalonia.Data.Core;
 using Avalonia.Data.Core.Plugins;
 using System.Linq;
 using Avalonia.Markup.Xaml;
+using GiosUi.Services;
 using GiosUi.ViewModels;
 using GiosUi.Views;
 
@@ -11,6 +11,8 @@ namespace GiosUi;
 
 public partial class App : Application
 {
+    private readonly IWindowService _windowService = new WindowService();
+    
     public override void Initialize()
     {
         AvaloniaXamlLoader.Load(this);

@@ -1,7 +1,7 @@
 using System.Threading.Tasks;
 using CommunityToolkit.Mvvm.Input;
 
-namespace GiosWebApp.ViewModels;
+namespace GiosUi.ViewModels;
 
 public partial class DataSourceViewModel : ViewModelBase
 {

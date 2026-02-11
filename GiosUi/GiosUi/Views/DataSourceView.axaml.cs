@@ -1,6 +1,6 @@
 using Avalonia.Controls;
 
-namespace GiosWebApp.Views;
+namespace GiosUi.Views;
 
 public partial class DataSourceView : UserControl
 {

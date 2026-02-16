@@ -4,18 +4,71 @@
 <MudDialogProvider/>
 <MudSnackbarProvider/>
 
-<div class="page">
-    <div class="sidebar">
-        <NavMenu/>
-    </div>
+<MudLayout>
 
-    <main>
-        <div class="top-row px-4">
-            <a href="https://learn.microsoft.com/aspnet/core/" target="_blank">About</a>
-        </div>
+    <!-- Górny pasek -->
+    <MudAppBar Elevation="4" Color="Color.Primary">
+        <MudIconButton Icon="@Icons.Material.Filled.Menu"
+                       Color="Color.Inherit"
+                       Edge="Edge.Start"
+                       OnClick="@ToggleDrawer" />
+        <MudText Typo="Typo.h6" Class="ml-2">ERP System</MudText>
 
-        <article class="content px-4">
-            @Body
-        </article>
-    </main>
-</div>
+        <MudSpacer />
+
+        <!-- Ikony powiadomień i użytkownika -->
+        <MudIconButton Icon="@Icons.Material.Filled.Notifications" Color="Color.Inherit" />
+        <MudMenu Icon="@Icons.Material.Filled.AccountCircle">
+            <MudMenuItem>Profil</MudMenuItem>
+            <MudMenuItem>Wyloguj</MudMenuItem>
+        </MudMenu>
+    </MudAppBar>
+
+    <!-- Lewy wysuwany pasek menu -->
+    <MudDrawer @bind-Open="_drawerOpen"
+               Variant="DrawerVariant.Responsive"
+               Elevation="4"
+               Anchor="Anchor.Start"
+               Class="mud-theme-background">
+
+        <MudNavMenu>
+
+            <MudNavLink Href="/" Match="NavLinkMatch.All">
+                <MudIcon Icon="@Icons.Material.Filled.Dashboard" />
+                Dashboard
+            </MudNavLink>
+
+            <MudNavLink Href="/sales">
+                <MudIcon Icon="@Icons.Material.Filled.ShoppingCart" />
+                Sprzedaż
+            </MudNavLink>
+
+            <MudNavLink Href="/inventory">
+                <MudIcon Icon="@Icons.Material.Filled.Inventory" />
+                Magazyn
+            </MudNavLink>
+
+            <MudNavLink Href="/settings">
+                <MudIcon Icon="@Icons.Material.Filled.Settings" />
+                Ustawienia
+            </MudNavLink>
+
+        </MudNavMenu>
+
+    </MudDrawer>
+
+    <!-- Główna zawartość -->
+    <MudMainContent Class="pa-4">
+        @Body
+    </MudMainContent>
+
+</MudLayout>
+
+@code {
+    private bool _drawerOpen = true;
+
+    private void ToggleDrawer()
+    {
+        _drawerOpen = !_drawerOpen;
+    }
+}

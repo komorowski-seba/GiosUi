@@ -1,7 +1,15 @@
 ﻿@page "/"
 
-<PageTitle>Home</PageTitle>
+@inject IJSRuntime JS
 
-<h1>Hello, world!</h1>
+<div id="map" style="height:400px"></div>
 
-Welcome to your new app.
+@code {
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await JS.InvokeVoidAsync("initLeafletMap", 52.2297, 21.0122);
+        }
+    }
+}

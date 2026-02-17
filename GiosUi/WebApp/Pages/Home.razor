@@ -1,15 +1,30 @@
 ﻿@page "/"
 
-@inject IJSRuntime JS
+@inject IJSRuntime JsRuntime
 
 <div id="map" style="height:400px"></div>
 
 @code {
+    private DotNetObjectReference<Home>? _objRef;
+    
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         if (firstRender)
         {
-            await JS.InvokeVoidAsync("initLeafletMap", 52.2297, 21.0122);
+            _objRef = DotNetObjectReference.Create(this);
+            
+            await JsRuntime.InvokeVoidAsync("initLeafletMap", 52.2297, 21.0122, _objRef);
         }
+    }
+
+    [JSInvokable]
+    public void OnMarkClicked(double lat, double lng)
+    {
+        Console.WriteLine($"Kliknięto marker: {lat}, {lng}");
+    }
+    
+    public void Dispose()
+    {
+        _objRef?.Dispose();
     }
 }

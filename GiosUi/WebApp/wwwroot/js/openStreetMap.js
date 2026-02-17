@@ -1,4 +1,4 @@
-window.initLeafletMap = function (lat, lng) {
+window.initLeafletMap = function (lat, lng, dotNetHelper) {
     var map = L.map('map').setView([lat, lng], 13);
 
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -6,7 +6,13 @@ window.initLeafletMap = function (lat, lng) {
         attribution: '© OpenStreetMap'
     }).addTo(map);
 
-    L.marker([lat, lng]).addTo(map)
-        .bindPopup('Tu jesteś!')
-        .openPopup();
+    var marker = L.marker([lat, lng]).addTo(map);
+
+    marker.on('click', function () {
+        dotNetHelper.invokeMethodAsync(
+            'OnMarkClicked',
+            lat,
+            lng
+        );
+    });
 }

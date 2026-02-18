@@ -4,8 +4,44 @@
 
 <div id="map" style="height:400px"></div>
 
+<MudDrawer @bind-Open="_open"
+           Anchor="Anchor.Bottom"
+           Variant="DrawerVariant.Temporary"
+           Class="bottom-panel"
+           Elevation="10"
+           Overlay="true">
+
+    <MudText Typo="Typo.h6">Panel od dołu</MudText>
+    <MudText>To jest wysuwany widok.</MudText>
+
+    <MudButton OnClick="() => _open = false">Zamknij</MudButton>
+</MudDrawer>
+
+@* <MudButton OnClick="() => _open = true"> *@
+@*     Otwórz panel *@
+@* </MudButton> *@
+
+
+@* @inherits MvvmComponentBase<MyButtonViewModel> *@
+@* *@
+@* <MudButton Command="@BindingContext.SetCountCommand" Disabled="@(!BindingContext.SetCountCommand.CanExecute(null))">Is it cool?</MudButton> *@
+@* *@
+@* <MudText> *@
+@*     @Bind(x => x.MyMessage) *@
+@* </MudText> *@
+@* *@
+@* @code { *@
+@*     [Parameter] *@
+@*     public int CurrentCount { get; set; } *@
+@* } *@
+@* <MyButton CurrentCount="currentCount" /> *@
+
+
 @code {
     private DotNetObjectReference<Home>? _objRef;
+
+    private bool _open;
+
     
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {

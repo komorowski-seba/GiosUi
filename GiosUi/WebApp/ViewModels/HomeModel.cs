@@ -1,23 +1,42 @@
 using CommunityToolkit.Mvvm.ComponentModel;
-using MvvmBlazor.ViewModel;
+using CommunityToolkit.Mvvm.Input;
+using Microsoft.JSInterop;
 
 namespace WebApp.ViewModels;
 
-public class HomeModel : ViewModelBase
+public partial class HomeModel : ObservableObject, IDisposable
 {
-    [ObservableProperty]
+    private readonly IJSRuntime _jsRuntime;
     
-    // [Notify]
-    // private string _myMessage = default!;
-    //
-    // [Parameter]
-    // public int CurrentCount { get; set; }
-    //
-    // private bool _canSetCount => CurrentCount > 3;
-    //
-    // [RelayCommand(CanExecute = nameof(_canSetCount))]
-    // private void SetCount()
-    // {
-    //     MyMessage = "S'cool!";
-    // }
+    private DotNetObjectReference<HomeModel>? _objRef;
+    
+    [ObservableProperty] 
+    private bool _openDetails;
+
+    public HomeModel(IJSRuntime jsRuntime)
+    {
+        _jsRuntime = jsRuntime;
+    }
+    
+    [RelayCommand]
+    private void HideDetails() => OpenDetails = false;
+
+    [RelayCommand]
+    private async Task ShowGiosOnMap()
+    {
+        _objRef = DotNetObjectReference.Create(this);
+        await _jsRuntime.InvokeVoidAsync("initLeafletMap", 52.2297, 21.0122, _objRef);
+    }
+
+    [JSInvokable]
+    public void OnMarkClicked(double lat, double lng)
+    {
+        Console.WriteLine($"Kliknięto marker: {lat}, {lng}");
+        OpenDetails = true;
+    }
+    
+    public void Dispose()
+    {
+        _objRef?.Dispose();
+    }
 }

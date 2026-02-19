@@ -1,10 +1,13 @@
 ﻿@page "/"
 
-@inject IJSRuntime JsRuntime
+@using System.ComponentModel
+@using WebApp.ViewModels
+@implements IDisposable
+@inject HomeModel HomeModel
 
 <div id="map" style="height:400px"></div>
 
-<MudDrawer @bind-Open="_open"
+<MudDrawer @bind-Open="HomeModel.OpenDetails"
            Anchor="Anchor.Bottom"
            Variant="DrawerVariant.Temporary"
            Class="bottom-panel"
@@ -14,53 +17,29 @@
     <MudText Typo="Typo.h6">Panel od dołu</MudText>
     <MudText>To jest wysuwany widok.</MudText>
 
-    <MudButton OnClick="() => _open = false">Zamknij</MudButton>
+    <MudButton OnClick="HomeModel.HideDetailsCommand.Execute">Zamknij</MudButton>
 </MudDrawer>
 
-@* <MudButton OnClick="() => _open = true"> *@
-@*     Otwórz panel *@
-@* </MudButton> *@
-
-
-@* @inherits MvvmComponentBase<MyButtonViewModel> *@
-@* *@
-@* <MudButton Command="@BindingContext.SetCountCommand" Disabled="@(!BindingContext.SetCountCommand.CanExecute(null))">Is it cool?</MudButton> *@
-@* *@
-@* <MudText> *@
-@*     @Bind(x => x.MyMessage) *@
-@* </MudText> *@
-@* *@
-@* @code { *@
-@*     [Parameter] *@
-@*     public int CurrentCount { get; set; } *@
-@* } *@
-@* <MyButton CurrentCount="currentCount" /> *@
-
-
 @code {
-    private DotNetObjectReference<Home>? _objRef;
+    protected override void OnInitialized()
+    {
+        HomeModel.PropertyChanged += OnViewModelPropertyChanged;
+    }
 
-    private bool _open;
-
+    private void OnViewModelPropertyChanged(object? sender, PropertyChangedEventArgs e)
+    {
+        InvokeAsync(StateHasChanged);
+    }   
     
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
-        if (firstRender)
-        {
-            _objRef = DotNetObjectReference.Create(this);
-            
-            await JsRuntime.InvokeVoidAsync("initLeafletMap", 52.2297, 21.0122, _objRef);
-        }
-    }
-
-    [JSInvokable]
-    public void OnMarkClicked(double lat, double lng)
-    {
-        Console.WriteLine($"Kliknięto marker: {lat}, {lng}");
+        if (firstRender) 
+            await HomeModel.ShowGiosOnMapCommand.ExecuteAsync(null);
     }
     
     public void Dispose()
     {
-        _objRef?.Dispose();
+        HomeModel.Dispose();
+        HomeModel.PropertyChanged -= OnViewModelPropertyChanged;
     }
 }

@@ -1,8 +1,9 @@
 ﻿@page "/"
 
-@using System.ComponentModel
 @using WebApp.ViewModels
-@implements IDisposable
+
+@inherits BaseView<HomeModel>
+
 @inject HomeModel HomeModel
 
 <div id="map" style="height:400px"></div>
@@ -21,25 +22,9 @@
 </MudDrawer>
 
 @code {
-    protected override void OnInitialized()
-    {
-        HomeModel.PropertyChanged += OnViewModelPropertyChanged;
-    }
-
-    private void OnViewModelPropertyChanged(object? sender, PropertyChangedEventArgs e)
-    {
-        InvokeAsync(StateHasChanged);
-    }   
-    
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         if (firstRender) 
             await HomeModel.ShowGiosOnMapCommand.ExecuteAsync(null);
-    }
-    
-    public void Dispose()
-    {
-        HomeModel.Dispose();
-        HomeModel.PropertyChanged -= OnViewModelPropertyChanged;
     }
 }

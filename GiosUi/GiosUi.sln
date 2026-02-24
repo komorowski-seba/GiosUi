@@ -6,6 +6,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nuke", "Nuke\Nuke.csproj", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApp", "WebApp\WebApp.csproj", "{87A27B4A-147B-47A8-8E0A-ED3267C7CF0D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MobApp", "MobApp\MobApp.csproj", "{6DE5E28B-DF6F-43B7-8FB0-92D245ADF715}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,5 +26,9 @@ Global
 		{87A27B4A-147B-47A8-8E0A-ED3267C7CF0D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{87A27B4A-147B-47A8-8E0A-ED3267C7CF0D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{87A27B4A-147B-47A8-8E0A-ED3267C7CF0D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6DE5E28B-DF6F-43B7-8FB0-92D245ADF715}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6DE5E28B-DF6F-43B7-8FB0-92D245ADF715}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6DE5E28B-DF6F-43B7-8FB0-92D245ADF715}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6DE5E28B-DF6F-43B7-8FB0-92D245ADF715}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

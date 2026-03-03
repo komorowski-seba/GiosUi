@@ -1,8 +1,9 @@
 import { Routes, RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 
-import { MapComponent } from 'view/map';
-import { ListComponent } from 'view/list'
+import { MapComponent } from './view/map/map.component';
+import { ListComponent } from './view/list/list.component';
+
 
 export const routes: Routes = [
   {

@@ -3,8 +3,8 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'list-component',
   imports: [],
-  templateUrl: './list.html',
-  styleUrl: './list.css',
+  templateUrl: './list.component.html',
+  styleUrl: './list.component.css',
 })
 export class ListComponent {
 

@@ -1,9 +1,11 @@
 import { Component } from '@angular/core';
-import { LeftMenuItems} from './left-menu.item';
+import { RouterLink, RouterLinkActive } from '@angular/router';
+import { LeftMenuItems } from './left-menu.item';
 
 @Component({
   selector: 'menu-component',
-  imports: [],
+  standalone: true,
+  imports: [RouterLink, RouterLinkActive],
   templateUrl: './menu.component.html',
   styleUrl: './menu.component.css',
 })

@@ -1,0 +1,18 @@
+.sidebar {
+  width: 220px;
+  background: #f4f4f4;
+  padding: 20px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+.active {
+  font-weight: bold;
+}

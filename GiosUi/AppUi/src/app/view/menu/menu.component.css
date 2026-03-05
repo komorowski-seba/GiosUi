@@ -1,18 +1,25 @@
 .sidebar {
-  width: 220px;
-  background: #f4f4f4;
-  padding: 20px;
+  width: 260px;
+  height: 100vh;
+  background: #1976d2;
+  color: white;
+}
 
+.menu {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  padding: 20px;
+  gap: 16px;
 }
 
-a {
+.menu a {
+  color: white;
   text-decoration: none;
-  color: black;
+  font-size: 18px;
 }
 
-.active {
+.menu a.active {
   font-weight: bold;
+  border-left: 4px solid white;
+  padding-left: 8px;
 }

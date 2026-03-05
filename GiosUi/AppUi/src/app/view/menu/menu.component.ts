@@ -10,5 +10,5 @@ import { LeftMenuItems } from './left-menu.item';
   styleUrl: './menu.component.css',
 })
 export class MenuComponent {
-
+  open = false;
 }

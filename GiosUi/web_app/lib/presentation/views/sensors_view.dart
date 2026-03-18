@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
 
-class sensorsView extends StatelessWidget {
-  const sensorsView({super.key});
+class SensorsView extends StatefulWidget {
+  const SensorsView({super.key});
 
+  @override
+  State<SensorsView> createState() => _SensorsViewState();
+}
+
+class _SensorsViewState extends State<SensorsView> {
   @override
   Widget build(BuildContext context) {
     return Center(

@@ -21,3 +21,28 @@ export default function DrawerComponent() {
         </Drawer>
     );
 }
+
+/*
+
+// presentation/components/UserDrawer.tsx
+import { Drawer } from "antd";
+import { useAppDispatch, useAppSelector } from "../../app/hooks";
+import { closeDrawer } from "../../features/ui/uiSlice";
+
+export default function UserDrawer() {
+  const dispatch = useAppDispatch();
+  const { isOpen, user } = useAppSelector((s) => s.ui);
+
+  return (
+    <Drawer open={isOpen} onClose={() => dispatch(closeDrawer())}>
+      {user && (
+        <>
+          <h3>{user.name}</h3>
+          <p>{user.email}</p>
+        </>
+      )}
+    </Drawer>
+  );
+}
+
+ */

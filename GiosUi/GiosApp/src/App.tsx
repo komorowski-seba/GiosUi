@@ -1,22 +1,64 @@
-// import { useState } from 'react'
-// import reactLogo from './assets/react.svg'
-// import viteLogo from './assets/vite.svg'
-// import heroImg from './assets/hero.png'
-// import 'antd/dist/reset.css';
+import React from 'react';
+import { Layout, Menu } from 'antd';
+import { EnvironmentOutlined, DatabaseOutlined } from '@ant-design/icons';
+import { BrowserRouter, Routes, Route, useNavigate, useLocation, Navigate } from 'react-router-dom';
+import { Provider } from 'react-redux';
 
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import MapViewA from 'app/views/MapView.tsx';
-import ListViewA from 'app/views/ListView.tsx';
-import './App.css'
+import { store } from '../src/app/stores/store';
+import { MapView } from '../src/app/views/MapView';
+import { ListView } from '../src/app/views/ListView';
 
-export default function App() {
-  return (
-      <BrowserRouter>
-        <Routes>
-            <Route path="/" element={<AppLayout />}>
-              <Route index element={<UsersView />} />
-            </Route>
-        </Routes>
-      </BrowserRouter>
-  );
-}
+const { Sider, Content } = Layout;
+
+const AppLayout: React.FC = () => {
+    const navigate = useNavigate();
+    const location = useLocation();
+    const selectedKey = location.pathname;
+    
+    return (
+        <Layout style={{ minHeight: "100vh" }}>
+            <Sider>
+                <Menu
+                    theme="dark"
+                    mode="inline"
+                    selectedKeys={[selectedKey]}
+                    onClick={(e) => navigate(e.key)}
+                    items={[
+                        {
+                            key: "/map",
+                            icon: <EnvironmentOutlined />,
+                            label: "Map",
+                        },
+                        {
+                            key: "/stations",
+                            icon: <DatabaseOutlined />,
+                            label: "Stations",
+                        },
+                    ]}
+                />
+            </Sider>
+
+            <Layout>
+                <Content style={{ margin: "16px" }}>
+                    <Routes>
+                        <Route path="/map" element={<MapView />} />
+                        <Route path="/stations" element={<ListView />} />
+                        <Route path="*" element={<Navigate to="/map" />} />
+                    </Routes>
+                </Content>
+            </Layout>
+        </Layout>
+    );
+};
+
+const App: React.FC = () => {
+    return (
+        <Provider store={store}>
+            <BrowserRouter>
+                <AppLayout />
+            </BrowserRouter>
+        </Provider>
+    );
+};
+
+export default App;

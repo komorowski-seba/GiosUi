@@ -1,28 +1,11 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { Station } from '../../domain/Station';
+import { configureStore } from '@reduxjs/toolkit';
+import uiReducer from '../stores/reducer';
 
-interface UiState {
-    isDrawerOpen: boolean;
-    stations: Station[];
-}
-
-const initialState: UiState = {
-    isDrawerOpen: false,
-    stations: [],
-};
-
-const uiSlice = createSlice({
-    name: "stations-drawer",
-    initialState,
-    reducers: {
-        loadStations: (state: UiState, action: PayloadAction<Station[]>) => {
-            state.stations = action.payload;
-        },
-        setDrawerOpen: (state: UiState, action: PayloadAction<boolean>) => {
-            state.isDrawerOpen = action.payload;
-        },
+export const store = configureStore({
+    reducer: {
+        ui: uiReducer,
     },
 });
 
-export const { loadStations, setDrawerOpen } = uiSlice.actions;
-export default uiSlice.reducer;
+export type RootState = ReturnType<typeof store.getState>;
+export type AppDispatch = typeof store.dispatch;

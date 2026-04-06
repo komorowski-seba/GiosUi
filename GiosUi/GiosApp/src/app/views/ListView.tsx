@@ -1,14 +1,17 @@
 import { Button } from 'antd';
-import { useAppDispatch } from '../app/hooks';
-import { openDrawer } from '../features/ui/uiSlice';
+import { useDispatch } from 'react-redux';
 
 export default function ListViewA() {
-    const dispatch = useAppDispatch();
+    const dispatch = useDispatch();
 
+    const handleClick = () => {
+        // dispatch(setDrawerOpen(true));
+    };
+    
     return (
         <>
             <h2>Widok A</h2>
-            <Button onClick={() => dispatch(openDrawer({ id: 123 }))}>
+            <Button onClick={handleClick()}>
                 Pokaż szczegóły
             </Button>
         </>

@@ -7,17 +7,18 @@ export default function DrawerComponent() {
     const dispatch = useAppDispatch();
 
     return (
-        <Drawer
-            open={isDrawerOpen}
-            onClose={() => dispatch(setDrawerOpen(false)))}
-            title="Details"
-        >
-            {item && (
-                <>
-                    <p></p>
-                    <p></p>
-                </>
-            )}
-        </Drawer>
+        <>
+            <Drawer
+                open={isDrawerOpen}
+                onClose={() => dispatch(setDrawerOpen(false)))}
+                title="Details">
+                {item && (
+                    <>
+                        <p></p>
+                        <p></p>
+                    </>
+                )}
+            </Drawer>
+        </>
     );
 }

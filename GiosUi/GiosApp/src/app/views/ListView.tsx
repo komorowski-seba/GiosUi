@@ -10,9 +10,9 @@ export function ListView() {
     
     return (
         <>
-            <h2>Widok A</h2>
+            <h2>Widok list</h2>
             <Button onClick={handleClick()}>
-                Pokaż szczegóły
+                Pokaż list szczegóły
             </Button>
         </>
     );

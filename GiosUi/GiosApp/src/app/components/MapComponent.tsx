@@ -26,7 +26,7 @@ type MapProps = {
 export const MapComponent = ({markers, onMarkerClick}: MapProps) => {
     return (
         <MapContainer
-            center={position}
+            center={markers.at(0).position}
             zoom={13}
             style={{ height: '100%', width: '100%' }}
         >

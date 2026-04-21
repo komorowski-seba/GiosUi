@@ -13,7 +13,9 @@ export function MapView() {
     ]
 
     const handleMarkerClick = (marker: MapMarker): void => {
-        console.log('marker: ', marker.id);
+        // console.log('marker: ', marker.id);
+        // alert('marker: ${marker.id}')
+        dispatch(setDrawerOpen(true));
     };
 
     const handleClick = () => {
@@ -22,33 +24,19 @@ export function MapView() {
     
     return (
         <>
-            <h2>Widok maps</h2>
-            <Button onClick = {handleClick}>
-                Pokaż maps szczegóły
-            </Button>
-            <Card title="Mapa">
-                <MapComponent markers={markers} onMarkerClick = {handleMarkerClick} />
-            </Card>
-            <DrawerComponent />
+            <div style={{ height: '100vh', display: 'flex', flexDirection: 'column' }}>
+                <h2>Widok maps</h2>
+                <Button onClick = {handleClick}>
+                    Pokaż maps szczegóły
+                </Button>
+
+                <div style={{ flex: 1 }}>
+                    <Card title="Mapa" style={{ height: '100%', width: '100%' }}>
+                        <MapComponent markers={markers} onMarkerClick = {handleMarkerClick} />
+                    </Card>
+                    <DrawerComponent />
+                </div>
+            </div>
         </>
     );
 }
-
-/*
-
-import { MapView } from "./MapView";
-
-function App() {
-
-  return (
-    <MapView
-      markers={markers}
-      onMarkerClick={handleMarkerClick}
-    />
-  );
-}
-
-export default App;
-
-
- */

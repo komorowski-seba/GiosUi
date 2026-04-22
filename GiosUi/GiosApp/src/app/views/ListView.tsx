@@ -1,7 +1,7 @@
 import { Button } from 'antd';
 import { useDispatch } from 'react-redux';
 
-export function ListView() {
+export function ListView(): Element {
     const dispatch = useDispatch();
 
     const handleClick = () => {

@@ -6,9 +6,9 @@ const getColor: string = (value: number) => {
     return '#ff4d4f';
 };
 
-type GaugeComponentProps = { value: number; name: string };
+export type GaugeComponentProps = { value: number; name: string };
 
-const GaugeComponent: Element = ({ value, name }: GaugeComponentProps) => {
+export const GaugeComponent: Element = ({ value, name }: GaugeComponentProps) => {
     const data = [
         { name: 'value', value },
         { name: 'rest', value: 100 - value },
@@ -30,7 +30,7 @@ const GaugeComponent: Element = ({ value, name }: GaugeComponentProps) => {
                     <Cell fill={color} />
                     <Cell fill="#eee" />
                 </Pie>
-            </Pie>
+            </PieChart>
 
             <div style={{ marginTop: -10, fontWeight: 600 }}>
                 {name}: {value}%

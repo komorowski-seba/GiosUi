@@ -18,7 +18,7 @@ export const GaugeComponent: Element = ({ value, name }: GaugeComponentProps) =>
 
     return (
         <div style={{ textAlign: 'center' }}>
-            <PieChart width={200} height={140}>
+            <PieChart width={200} height={200}>
                 <Pie
                     data={data}
                     startAngle={180}

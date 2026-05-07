@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { Station } from '../../domain/Station';
+import { Station } from '../../domain/entity/Station';
 import type { PayloadAction } from "@reduxjs/toolkit"
 
 interface UiState {

@@ -1,6 +1,5 @@
 import { Api } from './gios-api';
-import { IGiosService } from '../../app/interfaces/gios-service.interface';
-import { Station } from '../../domain/entity/Station';
+import type { IGiosService } from '../../app/interfaces/gios-service.interface';
 
 export class GiosService implements IGiosService {
     private api: Api;

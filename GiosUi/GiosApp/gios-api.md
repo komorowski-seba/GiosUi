@@ -8,3 +8,9 @@ npx swagger-typescript-api generate \
 -n gios-api.ts \
 --extract-request-params \
 --extract-response-body
+
+
+
+---
+
+https://open-meteo.com/en/docs/air-quality-api?utm_source=chatgpt.com

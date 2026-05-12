@@ -3,12 +3,14 @@ import { Layout, Menu } from 'antd';
 import { EnvironmentOutlined, DatabaseOutlined } from '@ant-design/icons';
 import { BrowserRouter, Routes, Route, useNavigate, useLocation, Navigate } from 'react-router-dom';
 import { Provider } from 'react-redux';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 import { store } from '../src/app/stores/store';
-import { MapView } from '../src/app/views/MapView';
-import { ListView } from '../src/app/views/ListView';
+import { MapView } from '../src/app/views/map.view';
+import { ListView } from '../src/app/views/list.view';
 
 const { Sider, Content } = Layout;
+const queryClient = new QueryClient();
 
 const AppLayout: React.FC = () => {
     const navigate = useNavigate();
@@ -16,6 +18,7 @@ const AppLayout: React.FC = () => {
     const selectedKey = location.pathname;
     
     return (
+        <QueryClientProvider client={queryClient}>
         <Layout style={{ minHeight: "100vh" }}>
             <Sider>
                 <Menu
@@ -48,6 +51,7 @@ const AppLayout: React.FC = () => {
                 </Content>
             </Layout>
         </Layout>
+        </QueryClientProvider>
     );
 };
 

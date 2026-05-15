@@ -1,7 +1,7 @@
 import { httpClientSingleton } from '../../app/http-api/http-client.singleton';
-import { IWeather } from '../../app/interfaces/weather.interface';
-import { CurrentWeatherDto } from '../../app/dto/current-weather.dto';
-import { SensorLocationDto } from '../../app/dto/sensor-location.dto';
+import type { IWeather } from '../../app/interfaces/weather.interface';
+import type { CurrentWeatherDto } from '../../app/dto/current-weather.dto';
+import type { SensorLocationDto } from '../../app/dto/sensor-location.dto';
 import { diContainer } from '../../app/services/di-container.service';
 
 export class OpenMeteoWeatherService
@@ -10,13 +10,13 @@ export class OpenMeteoWeatherService
     async searchPolandSensors(
         city: string, count: number
     ): Promise<SensorLocationDto[]> {
+        // https://geocoding-api.open-meteo.com/v1/search?name=Polska&count=100&countryCode=PL
         const response = await httpClientSingleton.get(
             "https://geocoding-api.open-meteo.com/v1/search",
             {
                 params: {
                     name: city,
-                    countryCode: "PL",
-                    language: "pl",
+                    countryCode: 'PL',
                     count: count,
                 },
             }
@@ -52,8 +52,3 @@ export class OpenMeteoWeatherService
         return response.data.current_weather;
     }
 }
-
-diContainer.register<IWeather>(
-    'IWeather',
-    new OpenMeteoWeatherService()
-);

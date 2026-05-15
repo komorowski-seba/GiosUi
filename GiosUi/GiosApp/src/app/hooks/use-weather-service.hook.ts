@@ -9,7 +9,7 @@ export const useWeatherServiceHook = (query: string) => {
     return useQuery({
         queryKey: ["pl-sensors", query],
         queryFn: () =>
-            weatherService.searchPolandSensors(query),
+            weatherService.searchPolandSensors(query, 100),
         enabled: query.length >= 2,
     });
 };

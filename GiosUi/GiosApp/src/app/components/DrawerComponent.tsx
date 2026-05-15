@@ -1,12 +1,12 @@
 import { Drawer } from 'antd';
-import { useSelector } from 'react-redux';
-import { useDispatch } from 'react-redux';
+// import { useSelector } from 'react-redux';
+// import { useDispatch } from 'react-redux';
 import type { RootState } from '../stores/store';
-import { setDrawerOpen } from '../stores/reducer';
+// import { setDrawerOpen } from '../stores/reducer';
 import { GaugeComponent } from './GaugeComponent';
 
 export function DrawerComponent() {
-    const isOpen: boolean = useSelector((state: RootState) => state.ui.isDrawerOpen);
+    const isOpen: boolean = false; //useSelector((state: RootState) => state.ui.isDrawerOpen);
     const dispatch = useDispatch();
     
     return (
@@ -15,7 +15,7 @@ export function DrawerComponent() {
                 title="Details"
                 placement="right"
                 open={isOpen}
-                onClose={() => dispatch(setDrawerOpen(false))}
+                onClose={() => {} /*dispatch(setDrawerOpen(false)*/}
                 styles={{
                     wrapper: {
                         width: '50vw',

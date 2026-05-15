@@ -14,3 +14,5 @@ npx swagger-typescript-api generate \
 ---
 
 https://open-meteo.com/en/docs/air-quality-api?utm_source=chatgpt.com
+
+https://geocoding-api.open-meteo.com/v1/search?name=Polska&count=100&countryCode=PL

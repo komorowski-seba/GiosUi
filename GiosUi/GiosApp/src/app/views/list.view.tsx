@@ -1,13 +1,11 @@
 import { Button } from 'antd';
-import { useDispatch } from 'react-redux';
-import { GiosService } from '../../infrastructure/gios-api/gios-service'
 import { useEffect, useState } from 'react';
 import { useWeatherServiceHook } from '../hooks/use-weather-service.hook';
 
 export function ListView(): JSX.Element {
     const [selectedCity, setSelectedCity] = useState("");
     const { data, isLoading, isFetching } = useWeatherServiceHook(selectedCity);
-    const cities = ["Warszawa", "Kraków", "Wrocław", "Gdańsk"];    
+    const cities = ["Polska", "Poland"];    
     
     return (
         <div>

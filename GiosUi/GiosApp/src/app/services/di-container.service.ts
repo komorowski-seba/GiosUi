@@ -3,7 +3,7 @@ import type { IWeather } from "../../app/interfaces/weather.interface";
 class DIContainer {
     private services = new Map<string, unknown>();
 
-    register<T>(token: string, instance: T) {
+    register<T>(token: string, instance: T): void {
         this.services.set(token, instance);
     }
 

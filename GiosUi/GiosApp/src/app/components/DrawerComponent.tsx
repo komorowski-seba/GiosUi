@@ -1,13 +1,11 @@
 import { Drawer } from 'antd';
-// import { useSelector } from 'react-redux';
-// import { useDispatch } from 'react-redux';
 import type { RootState } from '../stores/store';
-// import { setDrawerOpen } from '../stores/reducer';
 import { GaugeComponent } from './GaugeComponent';
 import { useAppStore } from '../store/use-store';
 
 export function DrawerComponent() {
     const isOpen: boolean = useAppStore((state) => state.isOpenModal);
+    const setOpen = useAppStore((state) => state.setOpenModal);
     
     return (
         <>
@@ -15,7 +13,7 @@ export function DrawerComponent() {
                 title="Details"
                 placement="right"
                 open={isOpen}
-                onClose={() => {} /*dispatch(setDrawerOpen(false)*/}
+                onClose={() => setOpen(false) }
                 styles={{
                     wrapper: {
                         width: '50vw',

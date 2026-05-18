@@ -2,15 +2,19 @@ import { Button, Card } from 'antd';
 import { DrawerComponent } from '../components/DrawerComponent';
 import { MapComponent } from '../components/MapComponent';
 import type { MapMarker } from '../components/MapComponent';
+import { useAppStore } from '../store/use-store';
 
 export function MapView() {
+    const isOpent: boolean = useAppStore((s) => s.isOpenModal);
+    const useStore = useAppStore((s) => s.setOpenModal);
+    
     const markers: MapMarker[] = [
         { id: '1', name: '11', position: [52.2297, 21.0122] },
         { id: '2', name: '22', position: [52.2197, 21.0222] },
     ]
 
     const handleMarkerClick = (marker: MapMarker): void => {
-        // dispatch(setDrawerOpen(true)); // <<< ---
+        useStore(true);
     };
 
     const handleClick = () => {

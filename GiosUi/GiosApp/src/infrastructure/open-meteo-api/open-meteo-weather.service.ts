@@ -10,7 +10,6 @@ export class OpenMeteoWeatherService
     async searchPolandSensors(
         city: string, count: number
     ): Promise<SensorLocationDto[]> {
-        // https://geocoding-api.open-meteo.com/v1/search?name=Polska&count=100&countryCode=PL
         const response = await httpClientSingleton.get(
             "https://geocoding-api.open-meteo.com/v1/search",
             {

@@ -4,10 +4,10 @@ import { Drawer } from 'antd';
 import type { RootState } from '../stores/store';
 // import { setDrawerOpen } from '../stores/reducer';
 import { GaugeComponent } from './GaugeComponent';
+import { useAppStore } from '../store/use-store';
 
 export function DrawerComponent() {
-    const isOpen: boolean = false; //useSelector((state: RootState) => state.ui.isDrawerOpen);
-    const dispatch = useDispatch();
+    const isOpen: boolean = useAppStore((state) => state.isOpenModal);
     
     return (
         <>

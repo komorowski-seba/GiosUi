@@ -24,11 +24,14 @@ type MapProps = {
 };
 
 export const MapComponent = ({markers, onMarkerClick}: MapProps) => {
+    const bounds = markers.length > 0 ? markers.map(n => n.position) : [[49.0, 14.1], [54.8, 24.1]];
+        
     return (
         <MapContainer
-            center={markers.at(0).position}
+            bounds={bounds as L.LatLngBoundsExpression}
+            boundsOptions={{ padding: [100, 100] }}
             zoom={13}
-            style={{ height: '400px', width: '100%' }}
+            style={{ height: '100%', width: '100%' }}
         >
             <TileLayer
                 attribution='&copy; OpenStreetMap contributors'

@@ -30,11 +30,14 @@ export function MapView() {
     
     return (
         <>
-            <div style={{ height: '100vh', display: 'flex', flexDirection: 'column' }}>
+            <div style={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
                 <h2>Stations</h2>
 
                 <div style={{ flex: 1 }}>
-                    <Card title="Mapa" style={{ height: '100%', width: '100%' }}>
+                    <Card 
+                        title="Mapa" 
+                        style={{ height: '100%', width: '100%', display: 'flex', flexDirection: 'column' }}
+                        styles={{ body: { flex: 1, padding: 0, height: '100%' } }} >
                         {isLoading || isFetching ? (
                             <div>Ładowanie danych...</div>
                         ) : data && data.length > 0 ? (

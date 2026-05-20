@@ -1,9 +1,10 @@
 import { Button } from 'antd';
-import { useEffect, useState } from 'react';
 import { useWeatherServiceHook } from '../hooks/use-weather-service.hook';
+import { useAppStore } from '../store/use-store';
 
 export function ListView(): JSX.Element {
-    const [selectedCity, setSelectedCity] = useState("");
+    const selectedCity: string = useAppStore((s) => s.selectedCity);
+    const setSelectedCity = useAppStore((s) => s.setSelectedCity);
     const { data, isLoading, isFetching } = useWeatherServiceHook(selectedCity);
     const cities = ["Polska", "Poland"];    
     

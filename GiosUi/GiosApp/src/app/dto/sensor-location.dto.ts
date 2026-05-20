@@ -1,6 +1,6 @@
 export interface SensorLocationDto {
     id: number;
-    city: string;
+    name: string;
     latitude: number;
     longitude: number;
     country: string;

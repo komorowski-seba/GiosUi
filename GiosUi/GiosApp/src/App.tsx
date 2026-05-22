@@ -49,7 +49,7 @@ const AppLayout: React.FC = () => {
                 </Sider>
     
                 <Layout>
-                    <Content style={{ margin: "16px", display: "flex", flexDirection: "column" }}>
+                    <Content style={{ margin: "16px", display: "flex", flexDirection: "column", height: "calc(100vh - 32px)" }}>
                         <Routes>
                             <Route path="/map" element={<MapView />} />
                             <Route path="/stations" element={<ListView />} />

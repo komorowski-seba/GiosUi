@@ -83,71 +83,76 @@ export function ListView(): JSX.Element {
                                 style={{
                                     padding: '16px 20px',
                                     cursor: 'pointer',
+                                    display: 'flex',
+                                    flexDirection: 'column',
+                                    alignItems: 'stretch',
                                 }}
                             >
-                                <List.Item.Meta
-                                    avatar={ <Avatar size={50} src={StationIcon} /> }
-                                    title={
-                                        <Typography.Text strong>
-                                            {sensor.name}
-                                        </Typography.Text>                                    }
-                                    description={`ID: ${sensor.id}`}
-                                />
-
-                                <div
-                                    style={{
-                                        fontSize: 11,
-                                        fontWeight: 600,
-                                        color: '#000000',
-                                        minWidth: 80,
-                                        textAlign: 'right'
-                                    }}
-                                >
-                                    {sensor.latitude && sensor.longitude && (
-                                        <img
-                                            src={mapService.getStaticIconMap(sensor.latitude, sensor.longitude, 12, 100, 100)}
-                                            alt="Location"
-                                            style={{
-                                                borderRadius: 8,
-                                                border: '1px solid #d9d9d9',
-                                                width: 150,
-                                                height: 150
-                                            }}
-                                        />
-                                    )}
-
-                                    {true && (
-                                        <div
-                                            style={{
-                                                marginTop: 16,
-                                                display: 'flex',
-                                                gap: 16,
-                                                justifyContent: 'center', // Środkowanie w poziomie
-                                                alignItems: 'center',     // Środkowanie w pionie
-                                                textAlign: 'left'         // Reset wyrównania tekstu (rodzic ma textAlign: 'right')
-                                            }}
-                                        >
-                                            <div>
-                                                <Typography.Title level={5}>Szczegóły stacji</Typography.Title>
-                                                <Typography.Text>Szerokość: {sensor.latitude}</Typography.Text><br />
-                                                <Typography.Text>Długość: {sensor.longitude}</Typography.Text>
-                                            </div>
-
-                                            {/*{sensor.latitude && sensor.longitude && (*/}
-                                            {/*    <img*/}
-                                            {/*        src={getStaticMapUrl(sensor.latitude, sensor.longitude)}*/}
-                                            {/*        alt="Lokalizacja stacji"*/}
-                                            {/*        style={{*/}
-                                            {/*            borderRadius: 8,*/}
-                                            {/*            border: '1px solid #d9d9d9',*/}
-                                            {/*            width: 150,*/}
-                                            {/*            height: 150*/}
-                                            {/*        }}*/}
-                                            {/*    />*/}
-                                            {/*)}*/}
-                                        </div>
-                                    )}
+                                <div style={{ display: 'flex', width: '100%', justifyContent: 'space-between', alignItems: 'center' }}>
+                                    <List.Item.Meta
+                                        avatar={ <Avatar size={50} src={StationIcon} /> }
+                                        title={
+                                            <Typography.Text strong>
+                                                {sensor.name}
+                                            </Typography.Text>                                    }
+                                        description={`ID: ${sensor.id}`}
+                                    />
+    
+                                    <div
+                                        style={{
+                                            fontSize: 11,
+                                            fontWeight: 600,
+                                            color: '#000000',
+                                            minWidth: 80,
+                                            textAlign: 'right'
+                                        }}
+                                    >
+                                        {sensor.latitude && sensor.longitude && (
+                                            <img
+                                                src={mapService.getStaticIconMap(sensor.latitude, sensor.longitude, 12, 100, 100)}
+                                                alt="Location"
+                                                style={{
+                                                    borderRadius: 8,
+                                                    border: '1px solid #d9d9d9',
+                                                    width: 150,
+                                                    height: 150
+                                                }}
+                                            />
+                                        )}
+                                    </div>
                                 </div>
+
+                                {true && (
+                                    <div
+                                        style={{
+                                            marginTop: 16,
+                                            display: 'flex',
+                                            gap: 16,
+                                            justifyContent: 'center', // Środkowanie w poziomie
+                                            alignItems: 'center',     // Środkowanie w pionie
+                                            textAlign: 'left'         // Reset wyrównania tekstu (rodzic ma textAlign: 'right')
+                                        }}
+                                    >
+                                        <div>
+                                            <Typography.Title level={5}>Szczegóły stacji</Typography.Title>
+                                            <Typography.Text>Szerokość: {sensor.latitude}</Typography.Text><br />
+                                            <Typography.Text>Długość: {sensor.longitude}</Typography.Text>
+                                        </div>
+
+                                        {/*{sensor.latitude && sensor.longitude && (*/}
+                                        {/*    <img*/}
+                                        {/*        src={getStaticMapUrl(sensor.latitude, sensor.longitude)}*/}
+                                        {/*        alt="Lokalizacja stacji"*/}
+                                        {/*        style={{*/}
+                                        {/*            borderRadius: 8,*/}
+                                        {/*            border: '1px solid #d9d9d9',*/}
+                                        {/*            width: 150,*/}
+                                        {/*            height: 150*/}
+                                        {/*        }}*/}
+                                        {/*    />*/}
+                                        {/*)}*/}
+                                    </div>
+                                )}
                             </List.Item>
                         )}
                     />

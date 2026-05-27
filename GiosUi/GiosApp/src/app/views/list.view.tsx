@@ -8,14 +8,18 @@ import {
 } from 'antd';
 import { useWeatherServiceHook } from '../hooks/use-weather-service.hook';
 import { useAppStore } from '../store/use-store';
-import { FireOutlined } from '@ant-design/icons';
+import { RadarChartOutlined } from '@ant-design/icons';
 import type { SensorLocationDto } from '../dto/sensor-location.dto';
+import StationIcon from '../../assets/station.png';
+import { diContainer } from '../services/di-container.service';
+import type { IMap } from '../interfaces/map.interface';
 
 export function ListView(): JSX.Element {
     const selectedCity: string = useAppStore((s) => s.selectedCity);
     const setSelectedCity = useAppStore((s) => s.setSelectedCity);
     const { data, isLoading, isFetching } = useWeatherServiceHook('Polska');
-    const cities = ["Polska", "Poland"];    
+    const cities = ["Polska", "Poland"];
+    const mapService: IMap = diContainer.resolve<IMap>('IMap');
     
     return (
         <div
@@ -82,15 +86,7 @@ export function ListView(): JSX.Element {
                                 }}
                             >
                                 <List.Item.Meta
-                                    avatar={
-                                        <Avatar
-                                            size={48}
-                                            icon={<FireOutlined />}
-                                            style={{
-                                                backgroundColor: '#ff4d4f',
-                                            }}
-                                        />
-                                    }
+                                    avatar={ <Avatar size={50} src={StationIcon} /> }
                                     title={
                                         <Typography.Text strong>
                                             {sensor.name}
@@ -100,14 +96,57 @@ export function ListView(): JSX.Element {
 
                                 <div
                                     style={{
-                                        fontSize: 22,
-                                        fontWeight: 700,
-                                        color: '#ff4d4f',
+                                        fontSize: 11,
+                                        fontWeight: 600,
+                                        color: '#000000',
                                         minWidth: 80,
                                         textAlign: 'right'
                                     }}
                                 >
-                                    {sensor.temperature ?? '--'}°
+                                    {sensor.latitude && sensor.longitude && (
+                                        <img
+                                            src={mapService.getStaticIconMap(sensor.latitude, sensor.longitude, 12, 100, 100)}
+                                            alt="Location"
+                                            style={{
+                                                borderRadius: 8,
+                                                border: '1px solid #d9d9d9',
+                                                width: 150,
+                                                height: 150
+                                            }}
+                                        />
+                                    )}
+
+                                    {true && (
+                                        <div
+                                            style={{
+                                                marginTop: 16,
+                                                display: 'flex',
+                                                gap: 16,
+                                                justifyContent: 'center', // Środkowanie w poziomie
+                                                alignItems: 'center',     // Środkowanie w pionie
+                                                textAlign: 'left'         // Reset wyrównania tekstu (rodzic ma textAlign: 'right')
+                                            }}
+                                        >
+                                            <div>
+                                                <Typography.Title level={5}>Szczegóły stacji</Typography.Title>
+                                                <Typography.Text>Szerokość: {sensor.latitude}</Typography.Text><br />
+                                                <Typography.Text>Długość: {sensor.longitude}</Typography.Text>
+                                            </div>
+
+                                            {/*{sensor.latitude && sensor.longitude && (*/}
+                                            {/*    <img*/}
+                                            {/*        src={getStaticMapUrl(sensor.latitude, sensor.longitude)}*/}
+                                            {/*        alt="Lokalizacja stacji"*/}
+                                            {/*        style={{*/}
+                                            {/*            borderRadius: 8,*/}
+                                            {/*            border: '1px solid #d9d9d9',*/}
+                                            {/*            width: 150,*/}
+                                            {/*            height: 150*/}
+                                            {/*        }}*/}
+                                            {/*    />*/}
+                                            {/*)}*/}
+                                        </div>
+                                    )}
                                 </div>
                             </List.Item>
                         )}

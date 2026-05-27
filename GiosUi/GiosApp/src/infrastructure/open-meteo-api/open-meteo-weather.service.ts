@@ -4,8 +4,7 @@ import type { CurrentWeatherDto } from '../../app/dto/current-weather.dto';
 import type { SensorLocationDto } from '../../app/dto/sensor-location.dto';
 import { diContainer } from '../../app/services/di-container.service';
 
-export class OpenMeteoWeatherService
-    implements IWeather
+export class OpenMeteoWeatherService implements IWeather
 {
     async searchPolandSensors(
         city: string, count: number
@@ -28,7 +27,9 @@ export class OpenMeteoWeatherService
                 latitude: item.latitude,
                 longitude: item.longitude,
                 country: item.country,
-                province: item.admin1,
+                admin1: item.admin1,
+                admin2: item.admin2,
+                admin3: item.admin3,
             })
         );
     }

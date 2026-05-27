@@ -6,15 +6,14 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 import { diContainer } from '../src/app/services/di-container.service';
 import { OpenMeteoWeatherService } from '../src/infrastructure/open-meteo-api/open-meteo-weather.service';
+import { MapApiService } from '../src/infrastructure/map-api/map-api.service';
 
 import { MapView } from '../src/app/views/map.view';
 import { ListView } from '../src/app/views/list.view';
 
 // di services
-diContainer.register<IWeather>(
-    'IWeather',
-    new OpenMeteoWeatherService()
-);
+diContainer.register<IWeather>('IWeather', new OpenMeteoWeatherService());
+diContainer.register<IMap>('IMap', new MapApiService());
 
 const { Sider, Content } = Layout;
 const queryClient = new QueryClient();

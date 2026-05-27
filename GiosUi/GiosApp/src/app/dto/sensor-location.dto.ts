@@ -4,5 +4,7 @@ export interface SensorLocationDto {
     latitude: number;
     longitude: number;
     country: string;
-    province?: string;
+    admin1?: string;
+    admin2?: string;
+    admin3?: string;
 }

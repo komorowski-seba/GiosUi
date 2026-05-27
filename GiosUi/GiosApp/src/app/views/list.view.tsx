@@ -4,7 +4,8 @@ import {
     Typography,
     Avatar,
     Spin,
-    Empty 
+    Empty,
+    Collapse
 } from 'antd';
 import { useWeatherServiceHook } from '../hooks/use-weather-service.hook';
 import { useAppStore } from '../store/use-store';
@@ -20,6 +21,10 @@ export function ListView(): JSX.Element {
     const { data, isLoading, isFetching } = useWeatherServiceHook('Polska');
     const cities = ["Polska", "Poland"];
     const mapService: IMap = diContainer.resolve<IMap>('IMap');
+
+    const handleRowClick = (id: number) => {
+        setSelectedCity(id === selectedCity ? 0 : id);
+    };
     
     return (
         <div
@@ -30,22 +35,6 @@ export function ListView(): JSX.Element {
                 flex: 1,
             }}
         >
-            <div style={{ marginBottom: 20, height: '160' }}>
-                <h2>Stacje pogodowe</h2>
-            </div>
-
-            
-            <hr />
-            {/*{data && (*/}
-            {/*    <div>*/}
-            {/*        <ul>*/}
-            {/*            {data.map((sensor: any) => (*/}
-            {/*                <li key={sensor.id}>{sensor.name}</li>*/}
-            {/*            ))}*/}
-            {/*        </ul>*/}
-            {/*    </div>*/}
-            {/*)}*/}
-
             <Card
                 style={{
                     flex: 1,
@@ -80,6 +69,7 @@ export function ListView(): JSX.Element {
                         dataSource={data}
                         renderItem={(sensor: SensorLocationDto) => (
                             <List.Item
+                                onClick={() => handleRowClick(sensor.id)}
                                 style={{
                                     padding: '16px 20px',
                                     cursor: 'pointer',
@@ -122,37 +112,39 @@ export function ListView(): JSX.Element {
                                     </div>
                                 </div>
 
-                                {true && (
-                                    <div
-                                        style={{
-                                            marginTop: 16,
-                                            display: 'flex',
-                                            gap: 16,
-                                            justifyContent: 'center', // Środkowanie w poziomie
-                                            alignItems: 'center',     // Środkowanie w pionie
-                                            textAlign: 'left'         // Reset wyrównania tekstu (rodzic ma textAlign: 'right')
-                                        }}
-                                    >
-                                        <div>
-                                            <Typography.Title level={5}>Szczegóły stacji</Typography.Title>
-                                            <Typography.Text>Szerokość: {sensor.latitude}</Typography.Text><br />
-                                            <Typography.Text>Długość: {sensor.longitude}</Typography.Text>
-                                        </div>
-
-                                        {/*{sensor.latitude && sensor.longitude && (*/}
-                                        {/*    <img*/}
-                                        {/*        src={getStaticMapUrl(sensor.latitude, sensor.longitude)}*/}
-                                        {/*        alt="Lokalizacja stacji"*/}
-                                        {/*        style={{*/}
-                                        {/*            borderRadius: 8,*/}
-                                        {/*            border: '1px solid #d9d9d9',*/}
-                                        {/*            width: 150,*/}
-                                        {/*            height: 150*/}
-                                        {/*        }}*/}
-                                        {/*    />*/}
-                                        {/*)}*/}
-                                    </div>
-                                )}
+                                <Collapse
+                                    ghost
+                                    activeKey={selectedCity === sensor.id ? ['details'] : []}
+                                    collapsible="disabled"
+                                    showArrow={false}
+                                    style={{ width: '100%' }}
+                                    items={[
+                                        {
+                                            key: 'details',
+                                            label: null,
+                                            style: { padding: 0 },
+                                            children: (
+                                                <div
+                                                    style={{
+                                                        paddingTop: 16,
+                                                        display: 'flex',
+                                                        gap: 16,
+                                                        justifyContent: 'center',
+                                                        alignItems: 'center',
+                                                        textAlign: 'left'
+                                                    }}
+                                                    onClick={(e) => e.stopPropagation()}
+                                                >
+                                                    <div>
+                                                        <Typography.Title level={5}>Szczegóły stacji</Typography.Title>
+                                                        <Typography.Text>Szerokość: {sensor.latitude}</Typography.Text><br />
+                                                        <Typography.Text>Długość: {sensor.longitude}</Typography.Text>
+                                                    </div>
+                                                </div>
+                                            )
+                                        }
+                                    ]}                                
+                                />
                             </List.Item>
                         )}
                     />
@@ -161,45 +153,4 @@ export function ListView(): JSX.Element {
             
         </div>
     );
-
 }
-
-/*
-
-            // { HEADER }
-<div style={{ marginBottom: 16 }}>
-    <h2>Stacje pogodowe</h2>
-
-    <div style={{ display: 'flex', gap: 8 }}>
-        {cities.map(city => (
-            <button
-                key={city}
-                onClick={() => setSelectedCity(city)}
-                style={{
-                    padding: '8px 16px',
-                    borderRadius: 8,
-                    border: '1px solid #d9d9d9',
-                    cursor: 'pointer',
-                    background:
-                        selectedCity === city
-                            ? '#1677ff'
-                            : 'white',
-                    color:
-                        selectedCity === city
-                            ? 'white'
-                            : 'black',
-                    fontWeight: 500
-                }}
-            >
-                {city}
-            </button>
-        ))}
-    </div>
-</div>
-
-// { LISTA }
-
-</div>
-);
-
-*/

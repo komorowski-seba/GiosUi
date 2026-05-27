@@ -1,0 +1,77 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    flex: 1;
+}
+
+.card {
+    flex: 1;
+    overflow: hidden;
+    border-radius: 16px;
+}
+
+/* Ant Design v5 no bodyStyle */
+.cardBody {
+    padding: 0;
+    height: 100%;
+    overflow: auto;
+}
+
+.loaderContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.emptyState {
+    margin-top: 40px;
+}
+
+.listItem {
+    padding: 16px 20px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+
+.listItemRow {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.locationBadge {
+    font-size: 11px;
+    font-weight: 600;
+    color: #000000;
+    min-width: 80px;
+    text-align: right;
+}
+
+.staticMap {
+    border-radius: 8px;
+    border: 1px solid #d9d9d9;
+    width: 150px;
+    height: 150px;
+}
+
+.collapse {
+    width: 100%;
+}
+
+.collapseItem {
+    padding: 0;
+}
+
+.detailsContainer {
+    padding-top: 16px;
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    align-items: center;
+    text-align: left;
+}

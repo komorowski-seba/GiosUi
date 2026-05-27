@@ -1,5 +1,5 @@
 import {
-    List, 
+    List,
     Card,
     Typography,
     Avatar,
@@ -14,54 +14,32 @@ import type { SensorLocationDto } from '../dto/sensor-location.dto';
 import StationIcon from '../../assets/station.png';
 import { diContainer } from '../services/di-container.service';
 import type { IMap } from '../interfaces/map.interface';
+import styles from './list.view.module.css';
 
 export function ListView(): JSX.Element {
     const selectedCity: string = useAppStore((s) => s.selectedCity);
     const setSelectedCity = useAppStore((s) => s.setSelectedCity);
     const { data, isLoading, isFetching } = useWeatherServiceHook('Polska');
-    const cities = ["Polska", "Poland"];
     const mapService: IMap = diContainer.resolve<IMap>('IMap');
 
     const handleRowClick = (id: number) => {
         setSelectedCity(id === selectedCity ? 0 : id);
     };
-    
+
     return (
-        <div
-            style={{
-                display: 'flex',
-                flexDirection: 'column',
-                height: '100%',
-                flex: 1,
-            }}
-        >
+        <div className={styles.container}>
             <Card
-                style={{
-                    flex: 1,
-                    overflow: 'hidden',
-                    borderRadius: 16,
-                }}
-                bodyStyle={{
-                    padding: 0,
-                    height: '100%',
-                    overflow: 'auto'
-                }}
+                className={styles.card}
+                bodyStyle={{ padding: 0, height: '100%', overflow: 'auto' }}
             >
                 {isLoading ? (
-                    <div
-                        style={{
-                            display: 'flex',
-                            justifyContent: 'center',
-                            alignItems: 'center',
-                            height: '100%',
-                        }}
-                    >
+                    <div className={styles.loaderContainer}>
                         <Spin size="large" />
                     </div>
                 ) : !data || data.length === 0 ? (
                     <Empty
                         description="No data"
-                        style={{ marginTop: 40 }}
+                        className={styles.emptyState}
                     />
                 ) : (
                     <List
@@ -70,15 +48,9 @@ export function ListView(): JSX.Element {
                         renderItem={(sensor: SensorLocationDto) => (
                             <List.Item
                                 onClick={() => handleRowClick(sensor.id)}
-                                style={{
-                                    padding: '16px 20px',
-                                    cursor: 'pointer',
-                                    display: 'flex',
-                                    flexDirection: 'column',
-                                    alignItems: 'stretch',
-                                }}
+                                className={styles.listItem}
                             >
-                                <div style={{ display: 'flex', width: '100%', justifyContent: 'space-between', alignItems: 'center' }}>
+                                <div className={styles.listItemRow}>
                                     <List.Item.Meta
                                         avatar={ <Avatar size={50} src={StationIcon} /> }
                                         title={
@@ -87,26 +59,13 @@ export function ListView(): JSX.Element {
                                             </Typography.Text>                                    }
                                         description={`ID: ${sensor.id}`}
                                     />
-    
-                                    <div
-                                        style={{
-                                            fontSize: 11,
-                                            fontWeight: 600,
-                                            color: '#000000',
-                                            minWidth: 80,
-                                            textAlign: 'right'
-                                        }}
-                                    >
+
+                                    <div className={styles.locationBadge}>
                                         {sensor.latitude && sensor.longitude && (
                                             <img
                                                 src={mapService.getStaticIconMap(sensor.latitude, sensor.longitude, 12, 100, 100)}
                                                 alt="Location"
-                                                style={{
-                                                    borderRadius: 8,
-                                                    border: '1px solid #d9d9d9',
-                                                    width: 150,
-                                                    height: 150
-                                                }}
+                                                className={styles.staticMap}
                                             />
                                         )}
                                     </div>
@@ -117,22 +76,15 @@ export function ListView(): JSX.Element {
                                     activeKey={selectedCity === sensor.id ? ['details'] : []}
                                     collapsible="disabled"
                                     showArrow={false}
-                                    style={{ width: '100%' }}
+                                    className={styles.collapse}
                                     items={[
                                         {
                                             key: 'details',
                                             label: null,
-                                            style: { padding: 0 },
+                                            style: { padding: 0 }, /* Zostawione inline ze względu na strukturę antd */
                                             children: (
                                                 <div
-                                                    style={{
-                                                        paddingTop: 16,
-                                                        display: 'flex',
-                                                        gap: 16,
-                                                        justifyContent: 'center',
-                                                        alignItems: 'center',
-                                                        textAlign: 'left'
-                                                    }}
+                                                    className={styles.detailsContainer}
                                                     onClick={(e) => e.stopPropagation()}
                                                 >
                                                     <div>
@@ -143,14 +95,13 @@ export function ListView(): JSX.Element {
                                                 </div>
                                             )
                                         }
-                                    ]}                                
+                                    ]}
                                 />
                             </List.Item>
                         )}
                     />
                 )}
             </Card>
-            
         </div>
     );
 }

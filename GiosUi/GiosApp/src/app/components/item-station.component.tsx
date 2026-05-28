@@ -21,6 +21,8 @@ export function ItemStationComponent({ sensor }: ItemStationProps): JSX.Element 
     const setSelectedCity = useAppStore((s) => s.setSelectedCity);
     const mapService: IMap = diContainer.resolve<IMap>('IMap');
 
+    const isSelected = selectedCity === sensor.id;
+    
     function handleRowClick(id: number) {
         setSelectedCity(id === selectedCity ? 0 : id);
     };
@@ -28,7 +30,7 @@ export function ItemStationComponent({ sensor }: ItemStationProps): JSX.Element 
     return (
         <List.Item
             onClick={() => handleRowClick(sensor.id)}
-            className={styles.listItem}
+            className={`${styles.listItem} ${isSelected ? styles.active : ''}`}
         >
             <div className={styles.listItemRow}>
                 <List.Item.Meta
@@ -37,23 +39,13 @@ export function ItemStationComponent({ sensor }: ItemStationProps): JSX.Element 
                         <Typography.Text strong>
                             {sensor.name}
                         </Typography.Text>                                    }
-                    description={`ID: ${sensor.id}`}
+                    description={`Country: ${sensor.country}`}
                 />
-
-                <div className={styles.locationBadge}>
-                    {sensor.latitude && sensor.longitude && (
-                        <img
-                            src={mapService.getStaticIconMap(sensor.latitude, sensor.longitude, 12, 100, 100)}
-                            alt="Location"
-                            className={styles.staticMap}
-                        />
-                    )}
-                </div>
             </div>
 
             <Collapse
                 ghost
-                activeKey={selectedCity === sensor.id ? ['details'] : []}
+                activeKey={isSelected ? ['details'] : []}
                 showArrow={false}
                 className={styles.collapse}
                 items={[
@@ -66,10 +58,19 @@ export function ItemStationComponent({ sensor }: ItemStationProps): JSX.Element 
                                 className={styles.detailsContainer}
                                 onClick={(e) => handleRowClick(sensor.id)}
                             >
-                                <div>
+                                <div className={styles.leftSection} >
                                     <Typography.Title level={5}>Szczegóły stacji</Typography.Title>
-                                    <Typography.Text>Szerokość: {sensor.latitude}</Typography.Text><br />
-                                    <Typography.Text>Długość: {sensor.longitude}</Typography.Text>
+                                    <Typography.Text>Id: {sensor.id}</Typography.Text><br />
+                                    <Typography.Text>Latitude: {sensor.latitude}</Typography.Text><br />
+                                    <Typography.Text>Longitude: {sensor.longitude}</Typography.Text>
+                                </div>
+
+                                <div className={styles.middleSection}>
+                                    <img src={sensor.imageUrl || "sciezka_do_domyslnej_grafiki.png"} alt="Img" className={styles.stationImage} />
+                                </div>
+
+                                <div className={styles.rightSection}>
+                                    <Typography.Text ellipsis>{`${sensor.admin1}, ${sensor.admin2}, ${sensor.admin3}`}</Typography.Text>
                                 </div>
                             </div>
                         )
